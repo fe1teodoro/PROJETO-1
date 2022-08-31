@@ -1,0 +1,193 @@
+*{
+    box-sizing:border-box;
+}
+body{
+    font-family:"Ubuntu", sans-serif;
+    line-height:1;
+}
+body, nav, ol, ul, li, a, header, h1, img, menu, p, html, div{
+    margin:0;
+    padding:0;
+    border:0;
+    font:inherit;
+    vertical-align:baseline;
+    text-decoration:none;
+}
+a{
+    color:inherit;
+}
+
+
+.todo{
+    font-weight:50;
+    color:#111111;
+    background:url(https://unect.com.br/assets/img/FundoBranco.jpg) no-repeat;
+    background-size:cover;
+    fill:#226ed8;
+}
+.hero{
+    padding:38px 0 70px 0;
+    background-size:cover;
+}
+a.logomarca{
+    display:block;
+    width:70px;
+    height:86px;
+    background:url(https://unect.com.br/assets/img/logomarca.svg);
+    background-size:70px 86px;
+}
+.container{
+    width:90%;
+    margin:0 auto;
+}
+header.topo{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    align-self:center;
+    color:inherit;
+}
+.menu{
+    display:flex;
+}
+ol, ul{
+    list-style:none;
+}
+li{
+    display:list-item;
+}
+.menu li a {
+    font-size:18px;
+    font-weight:inherit;
+    margin-left:10px;
+    padding:14px;
+    color:inherit;
+    opacity:0.8;
+    border-radius:4px;
+    font-weight:bold;
+}
+.intro{
+    display:flex;
+    justify-content:space-between;
+    overflow:hidden;
+}
+.conteudo{
+    margin-bottom:64px;
+}
+.conteudo h1{
+    padding:80px 0 20px 0;
+    font-size:38px;
+    line-height:1.4;
+    max-width:540px;
+    font-weight:500;
+    color:rgba(51, 51, 51);
+    font-family:sans-serif;
+}
+h1{
+    font-size:40px;
+    line-height:48px;
+    color:inherit;
+}
+div.etiqueta{
+    margin:20px 1px 40px 10px;
+    display:flex;
+    justify-content:start;
+    font-size:20px;
+    font-weight:400;
+    opacity:0.8;
+}
+.etiqueta span{
+    padding-right:20px;
+}
+.etiqueta span:nth-child(2)::before{
+    content:"";
+    display:inline-block;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    position:relative;
+    top:-3px;
+    left:-10px;
+    background-color:#333333;
+}
+.etiqueta span:nth-child(2)::after{
+    content:"";
+    display:inline-block;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    position:relative;
+    top:-3px;
+    left:12px;
+    background-color:#333333;
+}
+.info{
+    display:flex;
+    align-items:center;
+}
+.info a:first-child
+{
+    margin-right:1.5rem;
+}
+a.cta-primary{
+    display:inline-block;
+    transition:200ms;
+    background-color:#226ed8;
+    color:white;
+    padding:16px 32px;
+    border-radius:4px;
+    font-weight:500;
+    font-size:18px;
+    box-shadow:0 6px 10px 0px rgb(0 0 0 / 15%);
+}
+a.sliding{
+    display:inline-block;
+}
+a.cta-primarylink{
+    font-size:18px;
+    color:#226ed8;
+    font-weight:500;
+}
+a.sliding:after{
+    display:block;
+    content:'';
+    margin-top:2px;
+    border-bottom:2px solid var(#226ed8);
+    transform: scaleX(0);
+    transition:transform 250ms ease-in-out;
+    transform-origin:0% 50%;
+}
+.marcas p{
+    color:rgba(51, 51, 51, 0.2);
+    font-size:20px;
+    text-transform:uppercase;
+    margin-top:60px;
+    display:block;
+    text-align:center;
+}
+p{
+    display:block;
+    margin-block-start:1em;
+    margin-block-end:1em;
+    margin-inline-start:0px;
+    margin-inline-end:0px;
+}
+.marcas ul{
+    display:flex;
+    flex-wrap:wrap;
+    width:320px;
+    align-items:center;
+    align-self:center;
+}
+.marcas ul li{
+    padding:70px 100px 0px 0px;
+}
+.marcas ul li:nth-child(-n+2){
+    padding-top:50px;
+}
+.marcas ul li:nth-child(even){
+    padding-right:0px;
+}
+nav{
+    display:block;
+}
