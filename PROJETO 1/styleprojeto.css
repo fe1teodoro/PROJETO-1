@@ -191,3 +191,82 @@ p{
 nav{
     display:block;
 }
+@media (max-width: 760px){
+.hero{
+    padding-top:0px !important;
+    padding:38px 0 50px 0;
+}
+header .topo{
+    display: none !important;
+    padding: 0px !important;
+}
+.mobile{
+    transition:0.8s;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:20px;
+    color:#111111;
+}
+.intro{
+    flex-direction:column;
+}
+.conteudo{
+    margin-bottom:20px;
+}
+.conteudo h1{
+    display:block;
+    width:95%;
+    margin:0;
+    padding:30px 0 0 10px;
+}
+.info{
+    flex-direction:column;
+}
+.info a:first-child{
+    padding-left: 3.8em;
+    padding-right: 3.8em;
+}
+.info a{
+    margin-bottom:20px;
+}
+.marcas{
+    padding: 10px 0 60px;
+}
+.marcas ul{
+    justify-content:center;
+    min-width:270px;
+    margin:0 auto;
+}
+.marcas ul li{
+    padding-right:20%;
+}
+.menu{
+    display:none;
+}
+}
+@media (max-width:900px){
+    .marcas ul{
+        width:280px;
+    }
+    .marcas ul li{
+        padding-right:10%;
+    }
+}
+@media (max-width:1000px){
+    .conteudo h1{
+        font-size:30px;
+    }
+    .marcas ul li{
+        padding-right:60px;
+    }
+}
+svg.logo_mobile{
+    display:block;
+    width:37px;
+    height:63px;
+    fill:inherit;
+}
+.mobile{
+    display:none;
+}
