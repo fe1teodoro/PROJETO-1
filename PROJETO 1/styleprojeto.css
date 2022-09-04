@@ -1,10 +1,6 @@
 *{
     box-sizing:border-box;
 }
-body{
-    font-family:"Ubuntu", sans-serif;
-    line-height:1;
-}
 body, nav, ol, ul, li, a, header, h1, img, menu, p, html, div{
     margin:0;
     padding:0;
@@ -87,6 +83,7 @@ h1{
     font-size:40px;
     line-height:48px;
     color:inherit;
+    font-family:inherit;
 }
 div.etiqueta{
     margin:20px 1px 40px 10px;
@@ -98,6 +95,7 @@ div.etiqueta{
 }
 .etiqueta span{
     padding-right:20px;
+    font-family:inherit;
 }
 .etiqueta span:nth-child(2)::before{
     content:"";
@@ -146,7 +144,6 @@ a.sliding{
 a.cta-primarylink{
     font-size:18px;
     color:#226ed8;
-    font-weight:500;
 }
 a.sliding:after{
     display:block;
@@ -191,21 +188,24 @@ p{
 nav{
     display:block;
 }
+.mobile{
+    display:none;
+}
 @media (max-width: 760px){
+header.topo{
+        display: none !important;
+        padding: 0px !important;
+}
 .hero{
     padding-top:0px !important;
     padding:38px 0 50px 0;
 }
-header .topo{
-    display: none !important;
-    padding: 0px !important;
-}
 .mobile{
-    transition:0.8s;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding-top:20px;
+    transition: 0.8s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
     color:#111111;
 }
 .intro{
@@ -267,6 +267,4 @@ svg.logo_mobile{
     height:63px;
     fill:inherit;
 }
-.mobile{
-    display:none;
-}
+
