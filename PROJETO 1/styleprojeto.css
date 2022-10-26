@@ -30,6 +30,17 @@ a{
     padding:38px 0 70px 0;
     background-size:cover;
 }
+dialog{
+    border:none;
+    border-radius:0.7em;
+    box-shadow: 0 0 1em rgb(0 0 0 /.5);
+    position:absolute;
+    width:400px;
+    height:250px;
+}
+dialog::backdrop{
+    background-color:rgb(0 0 0 / .7);
+}
 a.logomarca{
     display:block;
     width:70px;
@@ -146,6 +157,20 @@ a.cta-primarylink{
     font-size:18px;
     color:#226ed8;
     font-weight:500;
+}
+.login {
+    color:#226ed8 ;
+}
+.cadastro{
+    color:#226ed8 ;
+}
+a.login:hover{
+    background:#83b7ff;
+    color:#111111;
+}
+a.cadastro:hover{
+    background:#83b7ff;
+    color:#111111;
 }
 a.sliding:after{
     display:block;
