@@ -167,6 +167,13 @@ a.cta-primarylink{
 .green{
     color:green;
 }
+.conselhos{
+    padding:17px;
+    font-family:sans-serif;
+}
+.palavraChave{
+    margin-bottom:15px;
+}
 a.green:hover{
     background:#69e473;
     color:#111111;
