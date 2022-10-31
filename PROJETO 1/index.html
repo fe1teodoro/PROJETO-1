@@ -11,7 +11,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://unect.com.br/assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://unect.com.br/assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://unect.com.br/assets/img/favicon-16x16.png">
-
 </head>
 
 <body>
@@ -33,7 +32,10 @@
                         <a class="login" href="#">LOGIN</a>
                     </li>
                     <li>
-                        <a class="cadastro" href="#">REGISTRAR</a>
+                        <a class="logout" href="#">LOGOUT</a>
+                    </li>
+                    <li>
+                        <a class="cadastro" href="#">SEARCH</a>
                     </li>
                 </ul>
             </nav>
@@ -63,7 +65,7 @@
             <div>
                 <h1>Entrar</h1>
             </div>
-            <p>Login</p>
+            <p>Email</p>
             <input type="email" class="loginEmail">
             <p>Senha</p>
             <input type="password" class="loginSenha">
@@ -73,13 +75,12 @@
         </dialog>
         <dialog class="dialogRegistrar">
             <div>
-                <h1>Registrar</h1>
+                <h1>Buscar</h1>
             </div>
-            <p>Login</p>
-            <input type="email" class="loginEmail">
-            <p>Senha</p>
-            <input type="password" class="loginSenha">
-            <button class="sendRegistrar">Registrar</button>
+            <p>Word</p>
+            <input type="text" class="palavraChave">
+            <button class="sendBuscar">Buscar</button>
+            <div><ul class="containerAdvice"></ul></div>
             <button class="fechar2">Fechar</button>
         </dialog>
         <div class="container intro">
