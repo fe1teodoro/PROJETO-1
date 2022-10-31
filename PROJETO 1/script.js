@@ -1,10 +1,3 @@
-const botaoBuscar = document.querySelector('.sendBuscar');
-const botaoLogar = document.querySelector('.sendLogar');
-const botaoDeslogar = document.querySelector('.logout');
-const password = document.querySelector('.loginSenha');
-const container = document.querySelector('.containerAdvice');
-let palavra = document.querySelector('.palavraChave');
-
 const dialogLogin = document.querySelector('.dialogLogin');
 const buttonLogin = document.querySelector('.login');
 
@@ -30,6 +23,7 @@ email.addEventListener('keyup', () => {
 
 const tituloSenha = document.querySelector('.senhaText');
 let validaSenha = false;
+const password = document.querySelector('.loginSenha');
 
 password.addEventListener('keyup', () => {
     if(password.value.length <= 2){
@@ -43,12 +37,6 @@ password.addEventListener('keyup', () => {
     }
 });
 
-const login = {
-    email: 'eve.holt@reqres.in',
-    password: 'whatever'
-};
-let users;
-
 const fechar = document.querySelector('.fechar');
 
 fechar.addEventListener('click', () => {
@@ -57,36 +45,68 @@ fechar.addEventListener('click', () => {
     password.value = '';
 });
 
+const login = {
+    email: 'eve.holt@reqres.in',
+    password: 'whatever'
+};
+const botaoEntrar = document.querySelector('.sendLogar');
+const buttonSearch = document.querySelector('.search');
+
+botaoEntrar.addEventListener('click', async () =>{
+    if(validaEmail && validaSenha){
+    let users = {
+        email: email.value,
+        password: password.value,
+        token: ''
+        }
+        
+    let data = await (fetch('https://reqres.in/api/login', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(login)
+    })
+    .then((response) => response.json()))
+    users['token'] = JSON.stringify(data['token']);
+    console.log(users)
+    localStorage.token = users['token'];
+    buttonSearch.className = 'green';
+    dialogLogin.close()
+    }else{
+        alert('Preencha os campos corretamente!');
+    }
+    });
+
+const botaoDeslogar = document.querySelector('.logout');
+
+botaoDeslogar.addEventListener('click', () => {
+    buttonSearch.className = 'search';
+    localStorage.removeItem('token');
+    });
+
+const dialogSearch = document.querySelector('.dialogSearch');
+let ul;
+const container = document.querySelector('.containerAdvice');
+
+buttonSearch.addEventListener('click', () => {
+    dialogSearch.showModal();
+    ul = document.createElement('ul');
+    container.appendChild(ul);
+    });
+
 
 let li;
-let ul;
-
-botaoLogar.addEventListener('click', async () =>{
-if(validaEmail && validaSenha){
-users = {
-    email: email.value,
-    password: password.value,
-    token: ''
+const botaoBuscar = document.querySelector('.sendBuscar');
+let palavra = document.querySelector('.palavraChave');
+function clear(element){
+    if(element){
+        while(element.firstChild){
+            element.removeChild(element.firstChild)
+        }
     }
-    
-let data = await (fetch('https://reqres.in/api/login', {
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    method: 'POST',
-    body: JSON.stringify(login)
-})
-.then((response) => response.json()))
-users['token'] = JSON.stringify(data['token']);
-console.log(users)
-localStorage.token = users['token'];
-buttonSearch.className = 'green';
-dialogLogin.close()
-}else{
-    alert('Preencha os campos corretamente!');
-}
-});
+};
 
 botaoBuscar.addEventListener('click', () => {
     if(localStorage.token == '"QpwL5tke4Pnpja7X4"'){
@@ -97,11 +117,7 @@ botaoBuscar.addEventListener('click', () => {
         .then(dataAdvice => {
             console.log(dataAdvice);
             let advice = dataAdvice.slips;
-            if(ul){
-                while(ul.firstChild){
-                    ul.removeChild(ul.firstChild)
-                }
-            }
+            clear(ul);
             for(let i = 0; i<advice.length;i++){
                     li = document.createElement('li');
                     li.innerHTML = `${i+1}º conselho contendo '${dataAdvice.query}': "${advice[i].advice}" `;
@@ -116,6 +132,7 @@ botaoBuscar.addEventListener('click', () => {
             ul.appendChild(li);
         });
     }else{
+        clear(ul);
         li = document.createElement('li');
         li.innerHTML = 'Usuário Deslogado';
         ul.appendChild(li);
@@ -124,23 +141,7 @@ botaoBuscar.addEventListener('click', () => {
     palavra.focus();
 });
 
-botaoDeslogar.addEventListener('click', () => {
-    buttonSearch.className = 'search';
-    localStorage.removeItem('token');
-})
-
-
-const buttonSearch = document.querySelector('.search');
-const dialogSearch = document.querySelector('.dialogSearch');
 const fechar2 = document.querySelector('.fechar2');
-
-
-buttonSearch.addEventListener('click', () => {
-    dialogSearch.showModal();
-    ul = document.createElement('ul');
-    container.appendChild(ul);
-})
-
 
 fechar2.addEventListener('click', () => {
     dialogSearch.close();
