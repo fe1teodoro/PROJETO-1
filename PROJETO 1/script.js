@@ -10,24 +10,21 @@ let palavra = document.querySelector('.palavraChave');
 let validaEmail = false;
 let validaSenha = false;
 
-
 const login = {
     email: 'eve.holt@reqres.in',
     password: 'whatever'
 }
 let users;
-let li;
-let ul;
+let li = document.createElement('li');
 
-botaoLogar.addEventListener('click', async () =>{
-if(validaEmail && validaSenha){
+botaoLogar.addEventListener('click', () =>{
 users = {
     email: email.value,
     password: password.value,
     token: ''
     }
     
-let data = await (fetch('https://reqres.in/api/login', {
+fetch('https://reqres.in/api/login', {
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -35,15 +32,12 @@ let data = await (fetch('https://reqres.in/api/login', {
     method: 'POST',
     body: JSON.stringify(login)
 })
-.then((response) => response.json()))
-users['token'] = JSON.stringify(data['token']);
-console.log(users)
-localStorage.token = users['token'];
-buttonSearch.className = 'green';
-dialogLogin.close()
-}else{
-    alert('Preencha os campos corretamente!');
-}
+.then((response) => response.json())
+.then(function(data){
+    users['token'] = JSON.stringify(data['token']);
+    console.log(users);
+    localStorage.token = users['token'];
+})
 });
 
 botaoBuscar.addEventListener('click', () => {
@@ -55,74 +49,40 @@ botaoBuscar.addEventListener('click', () => {
         .then(dataAdvice => {
             let advice = dataAdvice.slips;
             for(let i = 0; i<advice.length;i++){
-                li = document.createElement('li');
                 li.innerHTML = advice[i].advice;
-                ul.appendChild(li);
+                container.appendChild(li);
             }
         });
         palavra.value = '';
     }else{
-        li = document.createElement('li');
         li.innerHTML = 'Usuário Deslogado';
-        ul.appendChild(li);
+        container.appendChild(li);
     };
 });
 
 botaoDeslogar.addEventListener('click', () => {
-    buttonSearch.className = 'search';
     localStorage.removeItem('token');
 })
 
-email.addEventListener('keyup', () => {
-    if(email.value.length <= 2){
-        tituloEmail.setAttribute('style', 'color: red');
-        tituloEmail.innerHTML = '<strong>Email (Insira no mínimo 3 caracteres)<strong>';
-        validaEmail = false;
-    }else{
-        tituloEmail.setAttribute('style', 'color:black');
-        tituloEmail.innerHTML = 'Email';
-        validaEmail = true;
-    }
-});
-password.addEventListener('keyup', () => {
-    if(password.value.length <= 2){
-        tituloSenha.setAttribute('style', 'color: red');
-        tituloSenha.innerHTML = '<strong>Senha (Insira no mínimo 3 caracteres)<strong>';
-        validaSenha = false;
-    }else{
-        tituloSenha.setAttribute('style', 'color:black');
-        tituloSenha.innerHTML = 'Senha';
-        validaSenha = true;
-    }
-});
-
 
 const buttonLogin = document.querySelector('.login');
-const buttonSearch = document.querySelector('.search');
+const buttonRegistrar = document.querySelector('.cadastro');
 const dialogLogin = document.querySelector('.dialogLogin');
-const dialogSearch = document.querySelector('.dialogSearch');
+const dialogRegistrar = document.querySelector('.dialogRegistrar');
 const fechar = document.querySelector('.fechar');
 const fechar2 = document.querySelector('.fechar2');
 
 buttonLogin.addEventListener('click', () => {
-    dialogLogin.showModal();
+    dialogLogin.showModal()
 })
 
-buttonSearch.addEventListener('click', () => {
-    dialogSearch.showModal();
-    ul = document.createElement('ul');
-    container.appendChild(ul);
+buttonRegistrar.addEventListener('click', () => {
+    dialogRegistrar.showModal();
 })
 
 fechar.addEventListener('click', () => {
-    dialogLogin.close();
-    email.value = '';
-    password.value = '';
+    dialogLogin.close()
 })
 fechar2.addEventListener('click', () => {
-    dialogSearch.close();
-    container.removeChild(ul);
-    palavra.value = '';
+    dialogRegistrar.close()
 })
-
-
