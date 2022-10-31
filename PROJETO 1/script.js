@@ -1,11 +1,9 @@
 const botaoBuscar = document.querySelector('.sendBuscar');
 const botaoLogar = document.querySelector('.sendLogar');
 const botaoDeslogar = document.querySelector('.logout');
-const tituloSenha = document.querySelector('.senhaText');
 const password = document.querySelector('.loginSenha');
 const container = document.querySelector('.containerAdvice');
 let palavra = document.querySelector('.palavraChave');
-let validaSenha = false;
 
 const dialogLogin = document.querySelector('.dialogLogin');
 const buttonLogin = document.querySelector('.login');
@@ -30,6 +28,8 @@ email.addEventListener('keyup', () => {
     }
 });
 
+const tituloSenha = document.querySelector('.senhaText');
+let validaSenha = false;
 
 password.addEventListener('keyup', () => {
     if(password.value.length <= 2){
@@ -49,11 +49,13 @@ const login = {
 };
 let users;
 
+const fechar = document.querySelector('.fechar');
+
 fechar.addEventListener('click', () => {
     dialogLogin.close();
     email.value = '';
     password.value = '';
-})
+});
 
 
 let li;
@@ -95,6 +97,11 @@ botaoBuscar.addEventListener('click', () => {
         .then(dataAdvice => {
             console.log(dataAdvice);
             let advice = dataAdvice.slips;
+            if(ul){
+                while(ul.firstChild){
+                    ul.removeChild(ul.firstChild)
+                }
+            }
             for(let i = 0; i<advice.length;i++){
                     li = document.createElement('li');
                     li.innerHTML = `${i+1}º conselho contendo '${dataAdvice.query}': "${advice[i].advice}" `;
@@ -125,7 +132,6 @@ botaoDeslogar.addEventListener('click', () => {
 
 const buttonSearch = document.querySelector('.search');
 const dialogSearch = document.querySelector('.dialogSearch');
-const fechar = document.querySelector('.fechar');
 const fechar2 = document.querySelector('.fechar2');
 
 
