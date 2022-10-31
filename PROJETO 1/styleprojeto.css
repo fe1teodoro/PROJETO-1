@@ -159,17 +159,24 @@ a.cta-primarylink{
 .login {
     color:#226ed8 ;
 }
-.cadastro{
+.search{
     color:#226ed8 ;
 }
 .logout{
     color:#226ed8 ;
 }
+.green{
+    color:green;
+}
+a.green:hover{
+    background:#69e473;
+    color:#111111;
+}
 a.login:hover{
     background:#83b7ff;
     color:#111111;
 }
-a.cadastro:hover{
+a.search:hover{
     background:#83b7ff;
     color:#111111;
 }
