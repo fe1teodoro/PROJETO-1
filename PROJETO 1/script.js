@@ -88,7 +88,7 @@ botaoEntrar.addEventListener('click', async () =>{
     localStorage.token = users['token'];
     buttonSearch.className = 'green';
     mensagem.removeChild (mensagem.firstChild);
-    dialogLogin.close()
+    dialogLogin.close();
     }else{
         clear(mensagem);
         let mensagemErro = document.createElement('p');
