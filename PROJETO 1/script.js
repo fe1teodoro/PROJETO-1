@@ -1,6 +1,14 @@
 const dialogLogin = document.querySelector('.dialogLogin');
 const buttonLogin = document.querySelector('.login');
 
+function clear(element){
+    if(element){
+        while(element.firstChild){
+            element.removeChild(element.firstChild)
+        }
+    }
+};
+
 buttonLogin.addEventListener('click', () => {
     dialogLogin.showModal();
 });
@@ -51,6 +59,7 @@ const login = {
 };
 const botaoEntrar = document.querySelector('.sendLogar');
 const buttonSearch = document.querySelector('.search');
+const mensagem = document.querySelector('.mensagem');
 
 botaoEntrar.addEventListener('click', async () =>{
     if(validaEmail && validaSenha){
@@ -75,7 +84,10 @@ botaoEntrar.addEventListener('click', async () =>{
     buttonSearch.className = 'green';
     dialogLogin.close()
     }else{
-        alert('Preencha os campos corretamente!');
+        clear(mensagem);
+        let mensagemErro = document.createElement('p');
+        mensagemErro.innerHTML = 'Preencha os campos corretamente!';
+        mensagem.appendChild(mensagemErro);
     }
     });
 
@@ -100,13 +112,6 @@ buttonSearch.addEventListener('click', () => {
 let li;
 const botaoBuscar = document.querySelector('.sendBuscar');
 let palavra = document.querySelector('.palavraChave');
-function clear(element){
-    if(element){
-        while(element.firstChild){
-            element.removeChild(element.firstChild)
-        }
-    }
-};
 
 botaoBuscar.addEventListener('click', () => {
     if(localStorage.token == '"QpwL5tke4Pnpja7X4"'){
