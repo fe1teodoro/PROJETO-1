@@ -51,6 +51,11 @@ fechar.addEventListener('click', () => {
     dialogLogin.close();
     email.value = '';
     password.value = '';
+    mensagem.removeChild (mensagem.firstChild);
+    tituloSenha.setAttribute('style', 'color:black');
+    tituloSenha.innerHTML = 'Senha';
+    tituloEmail.setAttribute('style', 'color:black');
+    tituloEmail.innerHTML = 'Email';
 });
 
 const login = {
@@ -82,6 +87,7 @@ botaoEntrar.addEventListener('click', async () =>{
     console.log(users)
     localStorage.token = users['token'];
     buttonSearch.className = 'green';
+    mensagem.removeChild (mensagem.firstChild);
     dialogLogin.close()
     }else{
         clear(mensagem);
