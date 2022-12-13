@@ -20,11 +20,11 @@ app.get('/', (req, res)=> {
 })
 
 app.get('/cadastro', (req, res)=> {
-    res.render('cadastro', {title: 'acadastro'})
+    res.render('cadastro', {title: 'cadastro'})
 })
 
 app.get('/cadastro/admin', (req, res)=> {
-    res.render('cadastroAdmin', {title: 'acadastroadm'})
+    res.render('cadastroAdmin', {title: 'cadastroadm'})
 })
 
 app.post('/login', async(req, res) => {
